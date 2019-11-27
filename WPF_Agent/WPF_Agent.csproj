@@ -34,7 +34,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>TalentifyLogo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MaterialDesignColors, Version=1.2.0.325, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.2.0\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.325, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -55,6 +64,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\CallTask.xaml.cs">
+      <DependentUpon>CallTask.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EmailTask.xaml.cs">
+      <DependentUpon>EmailTask.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Reports.xaml.cs">
+      <DependentUpon>Reports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TaskDetails.xaml.cs">
+      <DependentUpon>TaskDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Carousal.xaml.cs">
+      <DependentUpon>Carousal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\HistoryListItem.xaml.cs">
+      <DependentUpon>HistoryListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LeadListHistoryItem.xaml.cs">
+      <DependentUpon>LeadListHistoryItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PipelineCarousal.xaml.cs">
+      <DependentUpon>PipelineCarousal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PipelineCarousalItem.xaml.cs">
+      <DependentUpon>PipelineCarousalItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RecentListItem.xaml.cs">
+      <DependentUpon>RecentListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SearchBox.xaml.cs">
+      <DependentUpon>SearchBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TodayTaskHistory.xaml.cs">
+      <DependentUpon>TodayTaskHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TodayTaskTabItem.xaml.cs">
+      <DependentUpon>TodayTaskTabItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ToDoListItem.xaml.cs">
+      <DependentUpon>ToDoListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WonLeadCarousalItem.xaml.cs">
+      <DependentUpon>WonLeadCarousalItem.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,8 +121,79 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\CallTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EmailTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Reports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TaskDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\CommonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Carousal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\HistoryListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\LeadListHistoryItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PipelineCarousal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PipelineCarousalItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\RecentListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SearchBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TodayTaskHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TodayTaskTabItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ToDoListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\WonLeadCarousalItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -86,13 +211,53 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Fonts\Roboto-Black.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-BlackItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Bold.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-BoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Italic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Light.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-LightItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Medium.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-MediumItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Regular.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Thin.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-ThinItalic.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\01.png" />
+    <Resource Include="Resources\Images\AgentCalling.png" />
+    <Resource Include="Resources\Images\Brand.PNG" />
+    <Resource Include="Resources\Images\CallFowarding.png" />
+    <Resource Include="Resources\Images\CallOutline%402x.png" />
+    <Resource Include="Resources\Images\CallOutline%403x.png" />
+    <Resource Include="Resources\Images\CallOutline.png" />
+    <Resource Include="Resources\Images\CallTask.png" />
+    <Resource Include="Resources\Images\chair.png" />
+    <Resource Include="Resources\Images\DecisionMaking.PNG" />
+    <Resource Include="Resources\Images\EmailTask.png" />
+    <Resource Include="Resources\Images\Features.PNG" />
+    <Resource Include="Resources\Images\Introduction.PNG" />
+    <Resource Include="Resources\Images\LeadIdentifiers.PNG" />
+    <Resource Include="Resources\Images\LeadQualificatin.PNG" />
+    <Resource Include="Resources\Images\NeedsInvestigation.PNG" />
+    <Resource Include="Resources\Images\Objection.PNG" />
+    <Resource Include="Resources\Images\Presentation.png" />
+    <Resource Include="Resources\Images\ProductFeatures.PNG" />
+    <Resource Include="Resources\Images\ValueProposition.PNG" />
+    <Resource Include="Resources\Images\WebinarTask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TalentifyLogo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

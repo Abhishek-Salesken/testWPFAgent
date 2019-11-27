@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="WPF_Agent.UserControls.HistoryListItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_Agent.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border BorderBrush="#eee" BorderThickness="0,0,0,0.5" Margin="-15,0,-50,0" Cursor="Hand">
+        <Border.Style>
+            <Style>
+                <Setter Property="Border.Background" Value="Transparent"/>
+                <Style.Triggers>
+                    <Trigger Property="Border.IsMouseOver" Value="True">
+                        <Setter Property="Border.Background" Value="#f9f9f9" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+        <DockPanel Height="100" Margin="15,0,25,0">
+            <Border CornerRadius="16" BorderThickness="2" BorderBrush="White" VerticalAlignment="Center" Panel.ZIndex="1">
+                <Ellipse Width="28" Height="28" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Ellipse.Fill>
+                        <ImageBrush Stretch="UniformToFill" x:Name="TaskImage" ImageSource="/Resources/Images/CallTask.png" />
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Border>
+            <Ellipse Width="40" Height="40" Margin="-10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Ellipse.Fill>
+                    <ImageBrush Stretch="UniformToFill" x:Name="UserImage" ImageSource="https://www.leisureopportunities.co.uk/images/imagesX/249542_405534.jpg" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock VerticalAlignment="Center" Margin="20,0,0,0" >
+            <Run x:Name="Sentiment" FontFamily="{StaticResource RobotoBold}" FontSize="12" Foreground="#e84c4c"/><LineBreak/>
+            <Run x:Name="Name" Text="Unkown Name" FontFamily="{StaticResource RobotoMedium}" FontSize="16" Foreground="#222"/><LineBreak/>
+             <Run x:Name="Date"  FontSize="12" Foreground="#999"/>
+            </TextBlock>
+
+        </DockPanel>
+    </Border>
+</UserControl>

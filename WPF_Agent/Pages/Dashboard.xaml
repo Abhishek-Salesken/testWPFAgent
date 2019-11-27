@@ -1,0 +1,323 @@
+﻿<Page x:Class="WPF_Agent.Pages.Dashboard"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:local="clr-namespace:WPF_Agent.Pages"
+      xmlns:usercontrols="clr-namespace:WPF_Agent.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Dashboard">
+
+    <Grid Background="#eeeeee" Width="{DynamicResource MaxWidth}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40px"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="40px"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60px"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40px"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Column="1" Grid.Row="0">
+            <!--NEW TASK DROPDOWN-->
+            <materialDesign:PopupBox DockPanel.Dock="Right"  materialDesign:ShadowAssist.ShadowDepth="Depth5"   materialDesign:RippleAssist.IsDisabled="True" Background="Black"  HorizontalAlignment="Right" Foreground="Transparent" PlacementMode="BottomAndAlignRightEdges"  StaysOpen="False" IsPopupOpen="False"  x:Name="AccountSetting">
+                <materialDesign:PopupBox.ToggleContent >
+                    <WrapPanel Style="{DynamicResource SalesKenPopUpToggleButton}" Height="30" DockPanel.Dock="Right" >
+                        <DockPanel Height="30" >
+                            <materialDesign:PackIcon Kind="ArrowDropDown" DockPanel.Dock="Right" Foreground="White"  VerticalAlignment="Center" Height="24" Width="24" Margin="0,0,0,0"/>
+                            <TextBlock Text="NEW TASK" VerticalAlignment="Center" FontSize="12" Margin="20,0,5,0" Foreground="White" FontFamily="{DynamicResource RobotoMedium}"/>
+                        </DockPanel>
+                    </WrapPanel>
+                </materialDesign:PopupBox.ToggleContent>
+                <Border Padding="0,10" MinWidth="165" >
+                    <StackPanel Orientation="Vertical">
+                        <Button x:Name="CallTaskButton" Click="NewTaskButton_Click" Style="{DynamicResource SalesKenPopUpListItemButton}" Padding="20,10">
+                            <StackPanel Orientation="Horizontal" >
+                                <Ellipse Width="30" Height="30" HorizontalAlignment="Left"  >
+                                    <Ellipse.Fill>
+                                        <ImageBrush Stretch="UniformToFill"  ImageSource="/Resources/Images/CallTask.png" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <TextBlock Text="Call Task"  Margin="10,0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="EmailTaskButton"  Click="NewTaskButton_Click" Style="{DynamicResource SalesKenPopUpListItemButton}" Padding="20,10">
+                            <StackPanel Orientation="Horizontal" >
+                                <Ellipse Width="30" Height="30" HorizontalAlignment="Left"  >
+                                    <Ellipse.Fill>
+                                        <ImageBrush Stretch="UniformToFill"  ImageSource="/Resources/Images/EmailTask.png" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <TextBlock Text="Email Task"  Margin="10,0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="WebinarTaskButton"  Click="NewTaskButton_Click" Style="{DynamicResource SalesKenPopUpListItemButton}" Padding="20,10" >
+                            <StackPanel Orientation="Horizontal" >
+                                <Ellipse Width="30" Height="30" HorizontalAlignment="Left"  >
+                                    <Ellipse.Fill>
+                                        <ImageBrush Stretch="UniformToFill"  ImageSource="/Resources/Images/WebinarTask.png" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <TextBlock Text="Webinar Task"  Margin="10,0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="PresentationTaskButton"  Click="NewTaskButton_Click" Style="{DynamicResource SalesKenPopUpListItemButton}" Padding="20,10" >
+                            <StackPanel Orientation="Horizontal" >
+                                <Ellipse Width="30" Height="30" HorizontalAlignment="Left"  >
+                                    <Ellipse.Fill>
+                                        <ImageBrush Stretch="UniformToFill"  ImageSource="/Resources/Images/Presentation.png" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <TextBlock Text="Presentation"  Margin="10,0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </materialDesign:PopupBox>
+            <!--END-->
+
+            <!--SEARCH BOX-->
+            <!--<DockPanel DockPanel.Dock="Right" Background="#ffffff" Height="30" VerticalAlignment="Center">
+                <Button Style="{DynamicResource SalesKenSearchIcon}"  DockPanel.Dock="Right">
+                    <materialDesign:PackIcon Kind="Search"   VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#ccc"  Width="20" Height="20" />
+                </Button>
+                <TextBox  Style="{DynamicResource SalesKenSearchBox}"  />
+            </DockPanel>-->
+            <usercontrols:SearchBox DockPanel.Dock="Right"/>
+            <!--END-->
+            <TextBlock  FontSize="26" Text="Dashboard" VerticalAlignment="Center"/>
+        </DockPanel>
+        <Grid  Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <!--CALENDAR AND TO DO LIST-->
+            <materialDesign:Card Grid.Column="0"   materialDesign:ShadowAssist.ShadowDepth="Depth5" VerticalAlignment="Stretch" >
+                <StackPanel x:Name="ToDoListPanel" Background="White" materialDesign:ShadowAssist.ShadowDepth="Depth5"   Orientation="Vertical">
+                    <TabControl Background="#f9f9f9" Width="{DynamicResource CalendarWidth}" BorderBrush="White">
+                        <TabControl.Resources>
+                            <Style TargetType="{x:Type TabItem}">
+                                <Setter Property="Width" Value="Auto"/>
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="Height" Value="Auto"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="TabItem">
+                                            <Border Name="Border" Background="Transparent">
+                                                <ContentPresenter x:Name="ContentSite"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                ContentSource="Header"
+                                Margin="10,2"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True" SourceName="Border">
+                                                    <Setter TargetName="Border" Property="Background" Value="Transparent" />
+                                                    <Setter Property="Cursor" Value="Hand"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </TabControl.Resources>
+                        <TabItem   Background="White" BorderBrush="White" BorderThickness="0" Width="120">
+                            <TabItem.Header>
+                                <Button Style="{DynamicResource HeaderStyle}"  IsEnabled="False" Padding="20,0" Content="To - Do List" />
+                            </TabItem.Header>
+                            <StackPanel Orientation="Vertical">
+                                <!--CALENDAR-->
+                                <Border BorderBrush="#ccc" BorderThickness="0,1" Margin="0,-5,0,0">
+                                    <Viewbox Margin="0,10,0,0" Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TabControl}}}">
+                                        <Calendar x:Name="CalendarItem" />
+                                    </Viewbox>
+                                </Border>
+                                <!--END-->
+                                <!--TODO LIST-->
+                                <Border Padding="20,40" Background="White">
+                                    <StackPanel Orientation="Vertical">
+                                        <WrapPanel>
+                                            <TextBlock FontWeight="Medium" FontSize="18" Foreground="#4d4f5c" Text="To - Do List"/>
+                                            <!--Plus Icon PopUp-->
+                                            <materialDesign:PopupBox  PlacementMode="BottomAndAlignCentres" materialDesign:RippleAssist.IsDisabled="True">
+                                                <materialDesign:PopupBox.ToggleContent>
+                                                    <Border  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,-3,0,0">
+                                                        <Border.Effect>
+                                                            <DropShadowEffect BlurRadius="10" Opacity="0.2" ShadowDepth="0" />
+                                                        </Border.Effect>
+                                                        <Grid>
+                                                            <Border Name="mask"  Background="White" Width="30" Height="30" CornerRadius="15" />
+                                                            <StackPanel>
+                                                                <StackPanel.OpacityMask>
+                                                                    <VisualBrush Visual="{Binding ElementName=mask}"/>
+                                                                </StackPanel.OpacityMask>
+                                                                <TextBlock Style="{DynamicResource PlusIconStyle}" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                                    <materialDesign:PackIcon Kind="Plus" Width="20" Height="20" Margin="5"/>
+                                                                </TextBlock>
+                                                            </StackPanel>
+                                                        </Grid>
+                                                    </Border>
+                                                </materialDesign:PopupBox.ToggleContent>
+                                                <StackPanel Width="150">
+                                                    <Button FontWeight="DemiBold" Content="Create an Event" Style="{DynamicResource SalesKenPopUpListItemButton}" />
+                                                    <Button FontWeight="DemiBold" Content="Schedule Task" Style="{DynamicResource SalesKenPopUpListItemButton}" />
+
+                                                </StackPanel>
+                                            </materialDesign:PopupBox>
+                                            <!--END-->
+                                        </WrapPanel>
+                                        <ScrollViewer MaxHeight="330" VerticalScrollBarVisibility="Auto" Margin="0,0,-13,0">
+                                            <ScrollViewer.Resources>
+                                                <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">5</sys:Double>
+                                            </ScrollViewer.Resources>
+                                            <StackPanel x:Name="ToDoListStackPanel" Orientation="Vertical">
+
+                                            </StackPanel>
+                                        </ScrollViewer>
+                                    </StackPanel>
+                                </Border>
+                                <!--END-->
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Background="White" BorderThickness="0" BorderBrush="White"  Width="80">
+                            <TabItem.Header>
+                                <Button Style="{DynamicResource HeaderStyle}" Padding="20,0" HorizontalContentAlignment="Center" IsEnabled="False"  Content="Notes" />
+                            </TabItem.Header>
+                        </TabItem>
+                    </TabControl>
+                </StackPanel>
+            </materialDesign:Card>
+            <!--END-->
+            <!--TODAY'S TASK-->
+            <materialDesign:Card Grid.Column="1" Background="White" materialDesign:ShadowAssist.ShadowDepth="Depth5" VerticalAlignment="Stretch">
+                <DockPanel >
+                    <Border  Height="66" BorderBrush="#ccc" BorderThickness="0,0,0,1" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                        <DockPanel HorizontalAlignment="Stretch">
+                            <!--Filter By Activities-->
+                            <materialDesign:PopupBox DockPanel.Dock="Right" Margin="10,0,30,0" materialDesign:ShadowAssist.ShadowDepth="Depth5"   materialDesign:RippleAssist.IsDisabled="True" Background="Black"  HorizontalAlignment="Right" Foreground="Transparent" PlacementMode="BottomAndAlignRightEdges"  StaysOpen="False" IsPopupOpen="False" >
+                                <materialDesign:PopupBox.ToggleContent >
+                                    <WrapPanel>
+                                        <Border BorderBrush="#ccc" BorderThickness="1,1,0,1" Height="30" Width="155" Padding="10,0">
+                                            <TextBlock x:Name="FilterByActivities" Foreground="#999" Text="Filter By Activities" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <Border BorderBrush="#ccc" BorderThickness="0,1,1,1" Width="30" Height="30">
+                                            <materialDesign:PackIcon Kind="ChevronDown" Foreground="#ccc" VerticalAlignment="Center" Width="30" Height="30"/>
+                                        </Border>
+                                    </WrapPanel>
+
+                                </materialDesign:PopupBox.ToggleContent>
+                                <Border  MinWidth="165" >
+                                    <StackPanel Orientation="Vertical">
+                                        <Button x:Name="CallTaskButtonFilter" Click="ActivitiesButtonFilter_Click" Style="{DynamicResource SalesKenPopUpListItemButton}" >
+                                            <StackPanel Orientation="Horizontal" >
+                                                <Ellipse Width="30" Height="30" HorizontalAlignment="Left"  >
+                                                    <Ellipse.Fill>
+                                                        <ImageBrush Stretch="UniformToFill"  ImageSource="/Resources/Images/CallTask.png" />
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+                                                <TextBlock Text="Call Task"  Margin="10,0" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Button x:Name="EmailTaskButtonFilter" Click="ActivitiesButtonFilter_Click" Style="{DynamicResource SalesKenPopUpListItemButton}" >
+                                            <StackPanel Orientation="Horizontal" >
+                                                <Ellipse Width="30" Height="30" HorizontalAlignment="Left"  >
+                                                    <Ellipse.Fill>
+                                                        <ImageBrush Stretch="UniformToFill"  ImageSource="/Resources/Images/EmailTask.png" />
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+                                                <TextBlock Text="Email Task"  Margin="10,0" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Button x:Name="WebinarTaskButtonFilter" Click="ActivitiesButtonFilter_Click" Style="{DynamicResource SalesKenPopUpListItemButton}" >
+                                            <StackPanel Orientation="Horizontal" >
+                                                <Ellipse Width="30" Height="30" HorizontalAlignment="Left"  >
+                                                    <Ellipse.Fill>
+                                                        <ImageBrush Stretch="UniformToFill"  ImageSource="/Resources/Images/WebinarTask.png" />
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+                                                <TextBlock Text="Webinar Task"  Margin="10,0" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Button x:Name="PresentationTaskButtonFilter" Click="ActivitiesButtonFilter_Click" Style="{DynamicResource SalesKenPopUpListItemButton}"  >
+                                            <StackPanel Orientation="Horizontal" >
+                                                <Ellipse Width="30" Height="30" HorizontalAlignment="Left"  >
+                                                    <Ellipse.Fill>
+                                                        <ImageBrush Stretch="UniformToFill"  ImageSource="/Resources/Images/Presentation.png" />
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+                                                <TextBlock Text="Presentation"  Margin="10,0" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Button>
+                                    </StackPanel>
+                                </Border>
+                            </materialDesign:PopupBox>
+                            <!--END-->
+                            <!--Filter By Stages-->
+                            <materialDesign:PopupBox DockPanel.Dock="Right" Margin="10,0,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth5"   materialDesign:RippleAssist.IsDisabled="True" Background="Black"  HorizontalAlignment="Right" Foreground="Transparent" PlacementMode="BottomAndAlignRightEdges"  StaysOpen="False" IsPopupOpen="False" >
+                                <materialDesign:PopupBox.ToggleContent >
+                                    <WrapPanel>
+                                        <Border BorderBrush="#ccc" BorderThickness="1,1,0,1" Height="30" Width="155" Padding="10,0">
+                                            <TextBlock x:Name="FilterByStages" Foreground="#999" Text="Filter By Stages" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <Border BorderBrush="#ccc" BorderThickness="0,1,1,1" Width="30" Height="30">
+                                            <materialDesign:PackIcon Kind="ChevronDown" Foreground="#ccc" VerticalAlignment="Center" Width="30" Height="30"/>
+                                        </Border>
+                                    </WrapPanel>
+                                </materialDesign:PopupBox.ToggleContent>
+                                <StackPanel Width="148" Orientation="Vertical">
+                                    <Button Click="StagesButtonFilter_Click" Content="Stage 01" Style="{DynamicResource SalesKenPopUpListItemButton}"/>
+                                    <Button Click="StagesButtonFilter_Click"  Content="Stage 02" Style="{DynamicResource SalesKenPopUpListItemButton}"/>
+                                    <Button Click="StagesButtonFilter_Click"  Content="Stage 03" Style="{DynamicResource SalesKenPopUpListItemButton}"/>
+                                </StackPanel>
+                            </materialDesign:PopupBox>
+                            <!--END-->
+                            <TextBlock Text="Today's Task" Foreground="#222222" FontSize="20" VerticalAlignment="Center" Margin="30,0,0,0" FontWeight="Medium"/>
+                        </DockPanel>
+                    </Border>
+
+                    <UniformGrid Columns="2" VerticalAlignment="Stretch">
+                        <!--today Task Items Left SIde-->
+                        <Border  Background="#f9f9f9">
+                            <StackPanel x:Name="TodayTaskTabItemPanel" Orientation="Vertical" >
+
+                            </StackPanel>
+                        </Border>
+                        <!--END-->
+                        <!--today Task History right SIde-->
+                        <Border x:Name="TodayTaskHistoryPanel"  Background="White">
+
+                        </Border>
+                        <!--End-->
+                    </UniformGrid>
+                </DockPanel>
+            </materialDesign:Card>
+            <!--END-->
+            <Grid  Grid.Column="2" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--CAROUSEL LEAD's-->
+                <materialDesign:Card Grid.Row="0" materialDesign:ShadowAssist.ShadowDepth="Depth5"  Margin="15,0,0,0"  VerticalAlignment="Stretch" >
+                    <DockPanel HorizontalAlignment="Stretch" x:Name="WonLeadCarousalPanel" VerticalAlignment="Stretch" Background="White">
+
+                    </DockPanel>
+                </materialDesign:Card>
+                <!--END-->
+                <materialDesign:Card  Grid.Row="1" materialDesign:ShadowAssist.ShadowDepth="Depth5"  Margin="15,10,0,0"  VerticalAlignment="Stretch" >
+                    <DockPanel HorizontalAlignment="Stretch"  x:Name="PipelineCarousalPanel" Background="White" VerticalAlignment="Stretch" >
+
+                    </DockPanel>
+                </materialDesign:Card>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Page>

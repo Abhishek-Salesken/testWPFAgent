@@ -5,9 +5,119 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Agent"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock></TextBlock>
-        
+          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Salesken" MinWidth="1366" MinHeight="768" SizeChanged="Window_SizeChanged" FontFamily="{StaticResource RobotoRegular}" >
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="60"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Border BorderThickness="1"  Background="White" Panel.ZIndex="1">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="Black" Opacity="0.2"/>
+            </Border.BorderBrush>
+        </Border>
+        <Border Grid.Row="0" Panel.ZIndex="1">
+            <DockPanel  Grid.Row="0">
+
+
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+
+                    <!--Notification Button-->
+                    <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" >
+                        <materialDesign:PopupBox.ToggleContent>
+                            <materialDesign:PackIcon Kind="NotificationsNone"  Width="30" Height="30" />
+                        </materialDesign:PopupBox.ToggleContent>
+                        <Border Padding="10">
+                            <DockPanel>
+                                <TextBlock DockPanel.Dock="Bottom" VerticalAlignment="Center"  HorizontalAlignment="Left"  FontSize="10" ><Hyperlink Foreground="Red" RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://db.talentify.in/forgot_password.jsp">More >></Hyperlink></TextBlock>
+                                <StackPanel Orientation="Vertical" Width="258" x:Name="NotificationBox" >
+                                    <TextBlock Text="Notification"  FontWeight="SemiBold" FontSize="15" />
+                                    <Separator/>
+                                </StackPanel>
+                            </DockPanel>
+                        </Border>
+                    </materialDesign:PopupBox>
+
+                    <!--Account PopUp-->
+                    <materialDesign:PopupBox HorizontalAlignment="Right" Foreground="Transparent" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" IsPopupOpen="False" Margin="5,0,32,0"  x:Name="NewTaskPopUpButton" materialDesign:RippleAssist.IsDisabled="True">
+                        <materialDesign:PopupBox.ToggleContent>
+                            <WrapPanel>
+                                <Ellipse Width="45" Height="45" Margin="10,0,0,0">
+                                    <Ellipse.Fill>
+                                        <ImageBrush Stretch="UniformToFill" x:Name="ProfileImg" ImageSource="https://image.shutterstock.com/image-photo/studio-shot-young-man-looking-260nw-372072697.jpg" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <TextBlock   Margin="10,10,0,0" Width="103" FontSize="14" >
+                                    <Run x:Name="User" Text="Daanvir Singh"/><LineBreak/>
+                                    <Run x:Name="designation" FontSize="12" Foreground="#999999" Text="Agent"/>
+                                </TextBlock>
+                                <materialDesign:PackIcon Kind="ArrowDropDown"   Margin="0,5,0,0" Height="28" Width="28" />
+                            </WrapPanel>
+                        </materialDesign:PopupBox.ToggleContent>
+                        <StackPanel Width="200" >
+                            <WrapPanel>
+                                <Ellipse Width="45" Height="45" Margin="10,0">
+                                    <Ellipse.Fill>
+                                        <ImageBrush Stretch="UniformToFill" x:Name="ProfileImg1" ImageSource="https://image.shutterstock.com/image-photo/studio-shot-young-man-looking-260nw-372072697.jpg" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <TextBlock VerticalAlignment="Center" >
+                                        <Run FontSize="14" x:Name="User1" >Daanvir Singh</Run>
+                                </TextBlock>
+                            </WrapPanel>
+                            <Separator/>
+                            <Button Content="My Account" Style="{DynamicResource SalesKenPopUpListItemButton}"/>
+                            <Button Click="Logout"  Style="{DynamicResource SalesKenPopUpListItemButton}" Content="Sign Out"/>
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+                    <!--END-->
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"  Height="60">
+
+                    <Image Source="http://192.168.0.121:8080/assets/image/nav_icon.png" Height="30" VerticalAlignment="Center" Margin="20,0" />
+                    <Rectangle  Width="2" Height="30" VerticalAlignment="Center" Margin="2" Stroke="#eee" />
+                    <Button Style="{DynamicResource NavbarButtonStyle}" Width="110"  Click="Navigate_To" x:Name="Dashboard" >
+                        <StackPanel Orientation="Horizontal" >
+                            <materialDesign:PackIcon Kind="HomeOutline" Foreground="#444" Margin="10,0,0,0"/>
+                            <TextBlock  Text="Dashboard" Margin="5,0,9,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{DynamicResource NavbarButtonStyle}" Width="115" Click="Navigate_To" x:Name="TaskDetails" >
+                        <StackPanel Orientation="Horizontal" >
+                            <materialDesign:PackIcon Kind="Subtasks" Margin="10,0,0,0"/>
+                            <TextBlock Text="Task Details"  Margin="5,0,9,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{DynamicResource NavbarButtonStyle}" Width="90" Click="Navigate_To" x:Name="Pipeline"  >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Subtasks" Margin="10,0,0,0"/>
+                            <TextBlock  Text="Pipeline"   Margin="5,0,9,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{DynamicResource NavbarButtonStyle}" Width="85" Click="Navigate_To" x:Name="Reports" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Subtasks" Margin="10,0,0,0"/>
+                            <TextBlock Text="Reports"  Margin="5,0,9,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{DynamicResource NavbarButtonStyle}" Width="80" Click="Navigate_To" x:Name="Leads" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Subtasks" Margin="10,0,0,0"/>
+                            <TextBlock Text="Leads"  Margin="5,0,9,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+
+            </DockPanel>
+        </Border>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <Grid>
+                <DockPanel>
+                    <Frame x:Name="_mainFrame"  NavigationUIVisibility="Hidden"/>
+                </DockPanel>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Window>

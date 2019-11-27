@@ -1,0 +1,793 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#ed4d67" />
+    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="White"/>
+
+
+    <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#282828" />
+    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#ed4d67" />
+    <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#333333" />
+    <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="#282828" />
+
+    <sys:Double x:Key="MaxWidth">1080</sys:Double>
+    <sys:Double x:Key="CalendarWidth">300</sys:Double>
+    <FontFamily x:Key="RobotoRegular" >pack://application:,,,/Resources/Fonts/#Roboto Regular</FontFamily>
+    <FontFamily x:Key="RobotoMedium">pack://application:,,,/Resources/Fonts/#Roboto Medium</FontFamily>
+    <FontFamily x:Key="RobotoBold">pack://application:,,,/Resources/Fonts/#Roboto Bold</FontFamily>
+    <FontFamily x:Key="RobotoLight">pack://application:,,,/Resources/Fonts/#Roboto Light</FontFamily>
+
+    <Style TargetType="{x:Type Button}" x:Key="NavbarButtonStyle">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Height" Value="47"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value=" #444444"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#bf263f" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Button}" x:Key="SelectedNavbarButtonStyle">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Margin" Value="0,3.5,0,0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="#444444"/>
+        <Setter Property="Height" Value="55"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontFamily" Value="{DynamicResource RobotoMedium}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value=" #444444"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="#ed4d67" BorderThickness="0,0,0,4">
+                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#bf263f" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Button}" x:Key="SalesKenButton">
+        <Setter Property="Background" Value="#ed4d67"/>
+        <Setter Property="Margin" Value="20,0,0,0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value=" #ffffff"/>
+        <Setter Property="FontFamily" Value="{DynamicResource RobotoMedium}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" >
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#bf263f" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#f7657d" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type RadioButton}" x:Key="SalesKenRadioButtonChecked">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Margin" Value="8,0,0,0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="Width" Value="16"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <BulletDecorator Background="White" Cursor="Hand">
+                        <BulletDecorator.Bullet>
+                            <Grid Height="16" Width="16">
+                                <!--Define size of the Bullet-->
+                                <!--The two borders-->
+                                <Border Name="RadioOuter" Background="Transparent" BorderBrush="Gainsboro" BorderThickness="2" CornerRadius="8" />
+                                <Border CornerRadius="8" Margin="4" Name="RadioMark" Background="#ed4d67" Visibility="Hidden" />
+                            </Grid>
+                        </BulletDecorator.Bullet>
+                        <!--Text element-->
+                        <TextBlock Margin="3,1,0,0" Foreground="#FF3E3E3E" FontFamily="Calibri" FontSize="12">
+                        <ContentPresenter />
+                        </TextBlock>
+                    </BulletDecorator>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+
+                            <Setter TargetName="RadioMark" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="RadioOuter" Property="BorderBrush" Value="#ed4d67" />
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+    <Style TargetType="{x:Type RadioButton}" x:Key="SalesKenRadioButtonTransition">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Margin" Value="8,0,0,0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="Width" Value="16"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <BulletDecorator Background="White" Cursor="Hand">
+                        <BulletDecorator.Bullet>
+                            <Grid Height="16" Width="16">
+                                <!--Define size of the Bullet-->
+                                <!--The two borders-->
+                                <Border Name="RadioOuter" Background="Transparent" BorderBrush="Gainsboro" BorderThickness="2" CornerRadius="8" />
+                                <Border CornerRadius="8" Margin="4" Name="RadioMark" Background="Black" Visibility="Hidden" />
+                            </Grid>
+                        </BulletDecorator.Bullet>
+                        <!--Text element-->
+                        <TextBlock Margin="3,1,0,0" Foreground="#FF3E3E3E" FontFamily="Calibri" FontSize="12">
+                        <ContentPresenter />
+                        </TextBlock>
+                    </BulletDecorator>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+
+                            <Setter TargetName="RadioMark" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="RadioOuter" Property="BorderBrush" Value="Black" />
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style TargetType="{x:Type RadioButton}" x:Key="SalesKenRadioButtonUnChecked">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="Width" Value="16"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <Setter Property="Foreground" Value="Transparent"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="8" BorderThickness="2" BorderBrush="#ccc">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="SalesKenButtonDropDown">
+        <Setter Property="Background" Value="#ed4d67"/>
+        <Setter Property="Margin" Value="20,0,0,0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value=" #ffffff"/>
+
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" Padding="20,0,10,0">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="SideIcon">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="#ccc" BorderThickness="0,0,0,1">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="#eee"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="SaleskenSearchTextBox">
+        <Setter Property="Width" Value="180"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="BorderBrush" Value="#ccc"/>
+        <Setter Property="BorderThickness" Value="1,1,0,1"/>
+        <Setter Property="Padding" Value="8,0,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" Margin="0,0,0,0" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#eee"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#ccc"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Resources>
+            <VisualBrush x:Key="CueBannerBrush"  AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                <VisualBrush.Visual>
+                    <Label Content=" Search" Background="White" FontSize="14" Foreground="#ccc" FontStretch="Normal"/>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Style.Resources>
+        <Style.Triggers>
+            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+            </Trigger>
+            <Trigger Property="Text" Value="{x:Null}">
+                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="Background" Value="White" />
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="SaleskenDialingTextBox">
+        <Setter Property="Width" Value="180"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="BorderBrush" Value="#ccc"/>
+        <Setter Property="BorderThickness" Value="1,1,0,1"/>
+        <Setter Property="Padding" Value="8,0,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" Margin="0,0,0,0" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#eee"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#ccc"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Resources>
+            <VisualBrush x:Key="CueBannerBrush"  AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                <VisualBrush.Visual>
+                    <Label Content=" Dial Here" Background="Transparent" FontSize="14" Foreground="#ccc" FontStretch="Normal"/>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Style.Resources>
+        <Style.Triggers>
+            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+            </Trigger>
+            <Trigger Property="Text" Value="{x:Null}">
+                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+            </Trigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="SaleskenTextBox">
+        <Setter Property="Width" Value="257"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="BorderBrush" Value="#ccc"/>
+        <Setter Property="BorderThickness" Value="1,1,1,1"/>
+        <Setter Property="Margin" Value="0,10,0,0"/>
+        <Setter Property="Padding" Value="10,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" Margin="0,0,0,0" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#ccc"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#ccc"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Resources>
+            <VisualBrush x:Key="CueBannerBrush"  AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                <VisualBrush.Visual>
+                    <Label Content="Type Here" Background="Transparent" FontSize="14" Foreground="#ccc" FontStretch="Normal" Padding="13,0"/>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Style.Resources>
+        <Style.Triggers>
+            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+            </Trigger>
+            <Trigger Property="Text" Value="{x:Null}">
+                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+            </Trigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="SaleskenErrorTextBox">
+        <Setter Property="Width" Value="257"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="BorderBrush" Value="#eb384f"/>
+        <Setter Property="Background" Value="#fff5f6"/>
+        <Setter Property="BorderThickness" Value="1,1,1,1"/>
+        <Setter Property="Margin" Value="0,10,0,0"/>
+        <Setter Property="Padding" Value="10,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" Margin="0,0,0,0" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#ccc"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#ccc"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Resources>
+            <VisualBrush x:Key="CueBannerBrush"  AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                <VisualBrush.Visual>
+                    <Label Content="Type Here" Background="Transparent" FontSize="14" Foreground="#ccc" FontStretch="Normal" Padding="13,0"/>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Style.Resources>
+        <Style.Triggers>
+            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+            </Trigger>
+            <Trigger Property="Text" Value="{x:Null}">
+                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+            </Trigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+
+    <Style TargetType="{x:Type TextBox}" x:Key="SaleskenSuccessTextBox">
+        <Setter Property="Width" Value="257"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="BorderBrush" Value="#57b280"/>
+        <Setter Property="Background" Value="#f0fdf6"/>
+        <Setter Property="BorderThickness" Value="1,1,1,1"/>
+        <Setter Property="Margin" Value="0,10,0,0"/>
+        <Setter Property="Padding" Value="10,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" Margin="0,0,0,0" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#ccc"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#ccc"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Resources>
+            <VisualBrush x:Key="CueBannerBrush"  AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                <VisualBrush.Visual>
+                    <Label Content="Type Here" Background="Transparent" FontSize="14" Foreground="#ccc" FontStretch="Normal" Padding="13,0"/>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Style.Resources>
+        <Style.Triggers>
+            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+            </Trigger>
+            <Trigger Property="Text" Value="{x:Null}">
+                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+            </Trigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+
+    <Style TargetType="{x:Type WrapPanel}" x:Key="SalesKenPopUpToggleButton">
+        <Setter Property="Background" Value="#ed4d67"/>
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#bf263f" />
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="CallButton">
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="52"/>
+        <Setter Property="Width" Value="52"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="IsEnabled" Value="False"/>
+        <Setter Property="Background" Value="#0b8910"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="1" CornerRadius="26">
+                        <ContentPresenter  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.5"/>
+                <Setter Property="Cursor" Value="No"/>
+            </Trigger>
+
+
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Button}" x:Key="SalesKenPopUpListItemButton">
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Foreground" Value="#999999"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="1">
+                        <ContentPresenter  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ed4d67" />
+                <Setter Property="FontFamily" Value="{DynamicResource RobotoBold}"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="DialerButton">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value=" #4d4f5c"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontFamily" Value="{StaticResource RobotoMedium}"/>
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"  >
+
+                        <ContentPresenter  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ccc"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="DialerTabStyle">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Margin" Value="0,0,0,0"/>
+        <Setter Property="Height" Value="33"/>
+        <Setter Property="Foreground" Value=" #999999"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}"/>
+
+        <Setter Property="FontSize" Value="16"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsSelected,
+                          RelativeSource={RelativeSource AncestorType=TabItem}}"
+                         Value="True">
+                <Setter Property="FontFamily" Value="{StaticResource RobotoMedium}"/>
+                <Setter Property="Foreground" Value=" #444"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="#ed4d67" BorderThickness="0,0,0,4">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsSelected,
+                          RelativeSource={RelativeSource AncestorType=TabItem}}"
+                         Value="False">
+                <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}"/>
+                <Setter Property="Foreground" Value=" #999999"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0,0,0,4">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="HeaderStyle">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Foreground" Value=" #999999"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <Setter Property="FontSize" Value="16"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsSelected,
+                          RelativeSource={RelativeSource AncestorType=TabItem}}"
+                         Value="True">
+                <Setter Property="FontWeight" Value="DemiBold"/>
+                <Setter Property="Foreground" Value=" #444"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="#ed4d67" BorderThickness="0,0,0,4">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsSelected,
+                          RelativeSource={RelativeSource AncestorType=TabItem}}"
+                         Value="False">
+                <Setter Property="FontWeight" Value="Normal"/>
+                <Setter Property="Foreground" Value=" #999999"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0,0,0,4">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="CalenderStyle" TargetType="{x:Type Calendar}">
+        <Setter Property="Foreground" Value="Red"/>
+        <Setter Property="Background" Value="White"/>
+
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                    <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                    <GradientStop Color="#FF718597" Offset="0.375"/>
+                    <GradientStop Color="#FF617584" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Calendar}">
+                    <StackPanel x:Name="PART_Root" HorizontalAlignment="Center">
+                        <CalendarItem x:Name="PART_CalendarItem" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PlusIconStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="#ed4d67"/>
+        <Setter Property="Background" Value="White"/>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" From="#ed4d67" To="White"/>
+                            <ColorAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" From="White" To="#ed4d67" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" From="White" To="#ed4d67"/>
+                            <ColorAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" From="#ed4d67" To="White"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Button}" x:Key="SalesKenCarousalArrowDisabledButton">
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="#f9f9f9" />
+        <Setter Property="Foreground" Value="#eee"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" Margin="8,0,0,0" Width="29" Height="29">
+
+                        <ContentPresenter  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="SalesKenCarousalArrowButton">
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Foreground" Value="#ed4d67"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" Margin="8,0,0,0" Width="29" Height="29" CornerRadius="2">
+
+                        <ContentPresenter  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#f9f9f9" />
+
+                <Setter Property="Foreground" Value="#eee"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="True">
+                <Setter Property="Button.Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="Black"  ShadowDepth="0" BlurRadius="10" Opacity="0.2" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" From="#ed4d67" To="White"/>
+                            <ColorAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" From="White" To="#ed4d67" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" From="White" To="#ed4d67"/>
+                            <ColorAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" From="#ed4d67" To="White"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

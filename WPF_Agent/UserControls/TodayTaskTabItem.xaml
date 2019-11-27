@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="WPF_Agent.UserControls.TodayTaskTabItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_Agent.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <WrapPanel Margin="20,20,0,20" >
+        <!--<Ellipse Width="30" Height="30" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Ellipse.Fill>
+                <ImageBrush Stretch="UniformToFill" x:Name="TaskImage" ImageSource="/Resources/Images/EmailTask.png" />
+                </Ellipse.Fill>
+            </Ellipse>-->
+        <Image Height="30" Width="30" Name="TaskImage" Source="/Resources/Images/EmailTask.png"/>
+        <TextBlock VerticalAlignment="Center" Margin="20,0,0,0" HorizontalAlignment="Left" LineHeight="24">
+                <Run x:Name="Time" Foreground="#444" Text="No Time Given" FontSize="16"/><LineBreak/>
+                <Run x:Name="Company" FontFamily="{StaticResource RobotoMedium}" Foreground="#222" Text="Unknown Company" FontSize="16"/><LineBreak/>
+                <Run x:Name="Stage" Foreground="#999" Text="Stage not given" FontSize="14"/>
+        </TextBlock>
+    </WrapPanel>
+
+</UserControl>
